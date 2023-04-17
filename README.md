@@ -7,3 +7,4 @@
 - [ ] Add "details" tab to model output, with:
   - [ ] Confidence level
   - [ ] Assumptions made
+  - [ ] Additional resources
