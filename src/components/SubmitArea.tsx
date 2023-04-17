@@ -14,7 +14,7 @@ function SubmitArea({
   handleSubmit: () => Promise<void>;
 }) {
   return (
-    <div class="flex flex-col items-center justify-center gap-5 p-5">
+    <div class="flex flex-col items-center justify-center gap-5 py-5">
       <div
         class="tooltip tooltip-primary flex flex-row items-start gap-1"
         data-tip="Assistant uses a machine learning model to guess the input language"
