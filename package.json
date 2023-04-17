@@ -25,7 +25,6 @@
     "highlight.js": "^11.7.0",
     "indent-textarea": "^3.0.0",
     "nord-highlightjs": "^0.2.0",
-    "openai": "^3.2.1",
     "preact": "^10.13.0",
     "react-markdown": "^8.0.7",
     "react-spinners": "^0.13.8",

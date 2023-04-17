@@ -1,41 +1,53 @@
-import { Configuration, OpenAIApi } from "openai";
-
-const configuration = new Configuration({
-  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
+const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
 
 export default async function (lang: string, content: string, level: string) {
-  if (!configuration.apiKey) {
+  if (!API_KEY) {
     return {
       success: false,
       data: "OpenAI API key not configured. Make sure you have set the `VITE_OPENAI_API_KEY` environment variable (located in `.env`).",
     };
   }
+
   try {
-    const completion = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
-      messages: [
-        { role: "user", content: generatePrompt(lang, content, level) },
-      ],
-      max_tokens: 2048,
-      temperature: 0.6,
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: [
+          { role: "user", content: generatePrompt(lang, content, level) },
+        ],
+        temperature: 0.6,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${API_KEY}`,
+      },
     });
-    return {
-      success: true,
-      data:
-        completion.data.choices[0].message?.content ||
-        "Code assistant got your submission, but did not respond :(",
-    };
-  } catch (error: any) {
-    if (error.response) {
+
+    const data = await response.json();
+    if (response.ok) {
+      if (data.choices[0].message.content) {
+        return {
+          success: true,
+          data: data.choices[0].message.content,
+        };
+      } else {
+        return {
+          success: false,
+          data: "Code assistant got your submission, but did not respond :(",
+        };
+      }
+    } else {
       return {
         success: false,
-        data: JSON.stringify(error.response.data.error.message),
+        data: data.error.message,
       };
-    } else {
-      return { success: false, data: "An unknown error occurred" };
     }
+  } catch (err) {
+    return {
+      success: false,
+      data: "An unknown error occurred, please try again.",
+    };
   }
 }
 
