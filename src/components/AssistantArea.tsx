@@ -28,7 +28,7 @@ function AssistantArea({
             className={
               "prose !prose-nord " +
               (!response.success
-                ? "prose-p:text-red-300 prose-code:bg-red-300/10 prose-code:text-red-100"
+                ? "prose-p:text-red-300 prose-a:text-red-300 prose-strong:text-red-300 prose-code:bg-red-300/10 prose-code:text-red-100"
                 : "prose-code:bg-nord-4/10")
             }
           >
@@ -39,7 +39,7 @@ function AssistantArea({
       ) : (
         <div class="prose !prose-nord">
           <h3>Assistant says...</h3>
-          <p class="text-nord-4/75">Waiting to receive input</p>
+          <p class="text-nord-4/75">Waiting to receive input.</p>
         </div>
       )}
     </div>

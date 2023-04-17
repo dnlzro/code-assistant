@@ -1,12 +1,20 @@
 const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
 
-export default async function (lang: string, content: string, level: string) {
-  if (!API_KEY) {
+export default async function (
+  lang: string,
+  content: string,
+  level: string,
+  key?: string
+) {
+  if (!(API_KEY || key)) {
     return {
       success: false,
-      data: "OpenAI API key not configured. Make sure you have set the `VITE_OPENAI_API_KEY` environment variable (located in `.env`).",
+      data: "OpenAI API key not configured. Make sure you have set the `VITE_OPENAI_API_KEY` environment variable (located in `.env`), or specify a key using the **settings menu** above.",
     };
   }
+
+  // Key specified in frontend takes priority
+  const apiKey = key || API_KEY;
 
   try {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -20,7 +28,7 @@ export default async function (lang: string, content: string, level: string) {
       }),
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${API_KEY}`,
+        Authorization: `Bearer ${apiKey}`,
       },
     });
 

@@ -16,6 +16,7 @@
     "@codemirror/language-data": "^6.2.1",
     "@codemirror/state": "^6.2.0",
     "@codemirror/view": "^6.9.4",
+    "@heroicons/react": "^2.0.17",
     "@tailwindcss/typography": "^0.5.9",
     "@uiw/codemirror-theme-nord": "^4.19.16",
     "@vscode/vscode-languagedetection": "^1.0.22",

@@ -58,7 +58,7 @@ function SubmitArea({
           </select>
         </div>
         <div
-          class="tooltip tooltip-bottom tooltip-error"
+          class="tooltip tooltip-top tooltip-error"
           data-tip={
             content.trim().length === 0 || level === ""
               ? "You must enter code and choose your experience level before continuing."
@@ -69,7 +69,7 @@ function SubmitArea({
             class={
               "btn-primary btn w-36" +
               (content.trim().length === 0 || level === ""
-                ? " btn-disabled tooltip tooltip-error bg-nord-2 text-nord-0"
+                ? " btn-disabled bg-nord-2 text-nord-0"
                 : "")
             }
             onClick={handleSubmit}
