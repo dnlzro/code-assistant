@@ -13,30 +13,31 @@ export function App() {
   const [inProgress, setInProgress] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [useEnvKey, setUseEnvKey] = useState(false);
-  const [envKey, setEnvKey] = useState("");
-  const [envKeyValid, setEnvKeyValid] = useState(false);
+  const [apiKey, setApiKey] = useState("");
+  const [apiKeyValid, setApiKeyValid] = useState(false);
   const [response, setResponse] = useState<{
     success: boolean;
     data: string;
   } | null>(null);
   const handleSubmit = async () => {
+    console.log(lang, useEnvKey, apiKey, apiKeyValid);
     setInProgress(true);
     setResponse(
       await generate(
         lang?.languageId ? lang.languageId : "",
         content,
         level,
-        useEnvKey && envKeyValid ? envKey : undefined
+        !useEnvKey && apiKeyValid ? apiKey : undefined
       )
     );
     setInProgress(false);
   };
 
   useEffect(() => {
-    envKey.match(/^sk-[A-Za-z0-9]{48}$/)
-      ? setEnvKeyValid(true)
-      : setEnvKeyValid(false);
-  }, [envKey]);
+    apiKey.match(/^sk-[A-Za-z0-9]{48}$/)
+      ? setApiKeyValid(true)
+      : setApiKeyValid(false);
+  }, [apiKey]);
 
   return (
     <div class="flex min-h-screen flex-col md:max-h-screen">
@@ -47,9 +48,9 @@ export function App() {
           setSettingsOpen={setSettingsOpen}
           useEnvKey={useEnvKey}
           setUseEnvKey={setUseEnvKey}
-          envKey={envKey}
-          setEnvKey={setEnvKey}
-          envKeyValid={envKeyValid}
+          apiKey={apiKey}
+          setApiKey={setApiKey}
+          apiKeyValid={apiKeyValid}
         />
       </div>
       <div class="flex min-h-0 grow flex-col gap-6 p-6 md:grid md:grid-cols-2 md:gap-3 md:p-3">
