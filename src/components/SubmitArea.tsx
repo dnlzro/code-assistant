@@ -34,8 +34,8 @@ function SubmitArea({
         </div>
       </div>
 
-      <div class="flex flex-row items-end gap-5">
-        <div className="form-control w-full max-w-xs">
+      <div class="flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-end sm:gap-5">
+        <div className="form-control w-full">
           <label className="label">
             <span className="label-text text-nord-4">
               Experience Level <span class="text-error">*</span>
@@ -67,7 +67,7 @@ function SubmitArea({
         >
           <button
             class={
-              "btn-primary btn w-36" +
+              "btn-primary btn w-full sm:w-36" +
               (content.trim().length === 0 || level === ""
                 ? " btn-disabled bg-nord-2 text-nord-0"
                 : "")

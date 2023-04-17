@@ -37,7 +37,7 @@ function SettingsArea({
       {settingsOpen && (
         <ul
           className={
-            "dropdown-content menu rounded-box w-96 overflow-clip border border-solid border-nord-8 bg-nord-1 shadow"
+            "dropdown-content menu rounded-box w-72 overflow-clip border border-solid border-nord-8 bg-nord-1 shadow sm:w-96"
           }
         >
           <li>

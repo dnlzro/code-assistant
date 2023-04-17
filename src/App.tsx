@@ -41,7 +41,7 @@ export function App() {
 
   return (
     <div class="flex min-h-screen flex-col md:max-h-screen">
-      <div class="flex flex-row items-center justify-between px-7 pt-6 text-nord-8 md:px-4 md:pt-3">
+      <div class="flex flex-row items-center justify-between px-4 pt-3 text-nord-8">
         <h1 class="text-3xl font-bold">AI Code Assistant</h1>
         <SettingsArea
           settingsOpen={settingsOpen}
@@ -53,7 +53,7 @@ export function App() {
           apiKeyValid={apiKeyValid}
         />
       </div>
-      <div class="flex min-h-0 grow flex-col gap-6 p-6 md:grid md:grid-cols-2 md:gap-3 md:p-3">
+      <div class="flex min-h-0 grow flex-col gap-3 p-3 md:grid md:grid-cols-2">
         <Editor
           content={content}
           setContent={setContent}
