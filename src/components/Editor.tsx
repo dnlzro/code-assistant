@@ -48,7 +48,7 @@ function Editor({
 
   async function guessLang(content: string) {
     const predictions = await modelOps.runModel(content);
-    if (predictions.length > 0 && predictions[0].confidence > 0.05) {
+    if (predictions.length > 0 && predictions[0].confidence > 0.1) {
       return predictions[0];
     }
     return null;
