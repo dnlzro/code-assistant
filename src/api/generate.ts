@@ -9,7 +9,7 @@ export default async function (
   if (!(API_KEY || key)) {
     return {
       success: false,
-      data: "OpenAI API key not configured. Make sure you have set the `VITE_OPENAI_API_KEY` environment variable (located in `.env`), or specify a key using the **settings menu** above.",
+      data: "OpenAI API key not configured. Make sure you have specified an API key using the **settings menu** above. \r\n\r\n If you are running this app locally, you can instead set the `VITE_OPENAI_API_KEY` environment variable (located in `.env`), then toggle the option 'Use API key from environment' in the settings menu.",
     };
   }
 

@@ -43,12 +43,12 @@ function SettingsArea({
           <li>
             <label className="label flex cursor-pointer gap-4 hover:bg-nord-2 active:bg-transparent">
               <span className="label-text text-nord-4">
-                Use API key from environment variable
+                Use API key from environment (
+                <span class="font-mono">.env</span>)
               </span>
               <input
                 type="checkbox"
                 className="toggle-primary toggle"
-                defaultChecked
                 onClick={() => setUseEnvKey(!useEnvKey)}
               />
             </label>
@@ -64,7 +64,7 @@ function SettingsArea({
                 type="text"
                 placeholder="sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
                 className={
-                  "input w-full bg-nord-0 font-mono text-nord-4 focus:bg-nord-3 focus:outline-none" +
+                  "input w-full bg-nord-0 font-mono text-nord-4 placeholder-nord-2 focus:bg-nord-3 focus:placeholder-nord-1 focus:outline-none" +
                   (envKeyValid
                     ? "border-2 border-success"
                     : !envKeyValid && envKey && "border-2 border-error")

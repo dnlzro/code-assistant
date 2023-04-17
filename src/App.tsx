@@ -12,7 +12,7 @@ export function App() {
   const [level, setLevel] = useState<string>("");
   const [inProgress, setInProgress] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [useEnvKey, setUseEnvKey] = useState(true);
+  const [useEnvKey, setUseEnvKey] = useState(false);
   const [envKey, setEnvKey] = useState("");
   const [envKeyValid, setEnvKeyValid] = useState(false);
   const [response, setResponse] = useState<{
