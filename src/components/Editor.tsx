@@ -118,7 +118,7 @@ function Editor({
   }, [editorElement]);
 
   return (
-    <div class="scrollarea relative h-full max-h-96 min-h-0 min-w-0 overflow-clip rounded-xl bg-nord-0 md:max-h-none">
+    <div class="scrollarea relative h-full max-h-64 min-h-0 min-w-0 overflow-clip rounded-xl bg-nord-0 md:max-h-none">
       <div
         ref={editorRef}
         class="h-full max-h-96 min-h-0 overflow-scroll p-5 pl-3 md:max-h-none"

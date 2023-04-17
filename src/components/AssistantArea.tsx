@@ -13,7 +13,7 @@ function AssistantArea({
   inProgress: boolean;
 }) {
   return (
-    <div class="assistant-container max-h-96 overflow-y-auto rounded-xl bg-nord-0 p-5 text-nord-6 md:max-h-none md:grow">
+    <div class="assistant-container overflow-y-auto rounded-xl bg-nord-0 p-5 text-nord-6 md:grow">
       {inProgress ? (
         <div class="flex h-full w-full flex-col items-center justify-center gap-8">
           <DotLoader color="#88C0D0" size="4rem" />
