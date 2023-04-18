@@ -33,7 +33,7 @@ function AssistantArea({
   if (inProgress && !response.explanation) {
     // Loading explanation
     return (
-      <div class="flex h-full w-full flex-col items-center justify-center gap-8 rounded-xl bg-nord-0">
+      <div class="flex h-full w-full flex-col items-center justify-center gap-8 rounded-xl bg-nord-0 py-16">
         <DotLoader color="#88C0D0" size="4rem" />
         <span class="text-center leading-tight text-nord-3">
           Generating response...
