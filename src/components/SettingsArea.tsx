@@ -1,5 +1,6 @@
 import { Cog6ToothIcon as Cog6ToothIconOutline } from "@heroicons/react/24/outline";
 import { Cog6ToothIcon as Cog6ToothIconSolid } from "@heroicons/react/24/solid";
+import { useEffect, useRef } from "preact/hooks";
 
 type SettingsAreaProps = {
   settingsOpen: boolean;
@@ -20,22 +21,50 @@ function SettingsArea({
   setApiKey,
   apiKeyValid,
 }: SettingsAreaProps) {
+  const dropdown = useRef<HTMLUListElement | null>(null);
+  const checkbox = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: any) => {
+      if (
+        dropdown.current &&
+        checkbox.current &&
+        !(
+          dropdown.current.contains(e.target) ||
+          checkbox.current.contains(e.target)
+        )
+      ) {
+        checkbox.current.checked = true;
+        setSettingsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdown, checkbox]);
+
   return (
-    <div className="dropdown dropdown-end dropdown-open">
-      <label class="swap swap-rotate">
+    <div className="dropdown-end dropdown-open dropdown">
+      <label class="swap-rotate swap">
         <input
+          ref={checkbox}
           type="checkbox"
-          onChange={() => setSettingsOpen(!settingsOpen)}
+          defaultChecked
+          onClick={(e) => {
+            if (!(e.target as HTMLInputElement).checked) setSettingsOpen(true);
+          }}
         />
-        <div class="swap-off">
+        <div class="swap-on">
           <Cog6ToothIconOutline className="h-8" />
         </div>
-        <div class="swap-on">
+        <div class="swap-off">
           <Cog6ToothIconSolid className="h-8" />
         </div>
       </label>
       {settingsOpen && (
         <ul
+          ref={dropdown}
           className={
             "dropdown-content menu rounded-box w-72 overflow-clip border border-solid border-nord-8 bg-nord-1 shadow sm:w-96"
           }

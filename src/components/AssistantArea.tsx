@@ -61,7 +61,7 @@ function AssistantArea({
             <PulseLoader color="#88C0D0" size="1rem" className="px-5 py-4" />
           ) : confidence ? (
             <>
-              <div className="stat gap-2 px-0 px-5 pt-1">
+              <div className="stat gap-2 px-5 pt-1">
                 <div className="stat-value">
                   {getConfidencePercent(confidence.data)}%
                 </div>
