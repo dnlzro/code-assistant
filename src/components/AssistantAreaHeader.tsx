@@ -44,7 +44,7 @@ function AssistantAreaHeader({
         <div className="tabs tabs-boxed w-full bg-nord-2/50 xs:w-auto">
           <a
             className={
-              "tab grow px-3 text-nord-4 xs:grow-0 " +
+              "tab grow px-3 text-nord-4 transition-all duration-200 xs:grow-0 " +
               (activeTab === ActiveTab.Explanation && "tab-active")
             }
             onClick={() => setActiveTab(ActiveTab.Explanation)}
@@ -53,7 +53,7 @@ function AssistantAreaHeader({
           </a>
           <a
             className={
-              "tab grow px-3 text-nord-4 xs:grow-0 " +
+              "tab grow px-3 text-nord-4 transition-all duration-200 xs:grow-0 " +
               (activeTab === ActiveTab.Details && "tab-active")
             }
             onClick={() => setActiveTab(ActiveTab.Details)}
