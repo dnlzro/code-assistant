@@ -79,7 +79,7 @@ function Editor({
           }),
           langConf.of([]),
           autoLang.of([]),
-          placeholder("Enter your code here..."),
+          placeholder(`Enter your code here...`),
         ],
       }),
       parent: editorElement,
@@ -118,10 +118,10 @@ function Editor({
   }, [editorElement]);
 
   return (
-    <div class="scrollarea relative h-full max-h-64 min-h-0 min-w-0 overflow-clip rounded-xl bg-nord-0 md:max-h-none">
+    <div class="scrollarea relative min-h-0 min-w-0 overflow-clip rounded-xl bg-nord-0">
       <div
         ref={editorRef}
-        class="h-full max-h-96 min-h-0 overflow-scroll p-5 pl-3 md:max-h-none"
+        class="h-full max-h-64 min-h-0 overflow-scroll p-5 pl-3 md:max-h-none"
       ></div>
     </div>
   );
