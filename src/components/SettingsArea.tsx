@@ -22,7 +22,7 @@ function SettingsArea({
 }: SettingsAreaProps) {
   return (
     <div className="dropdown dropdown-end dropdown-open">
-      <label class="swap">
+      <label class="swap swap-rotate">
         <input
           type="checkbox"
           onChange={() => setSettingsOpen(!settingsOpen)}
@@ -62,6 +62,10 @@ function SettingsArea({
               </label>
               <input
                 type="text"
+                autoCorrect="off"
+                autoComplete="off"
+                autoCapitalize="off"
+                spellCheck={false}
                 placeholder="sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
                 className={
                   "input w-full bg-nord-0 font-mono text-nord-4 placeholder-nord-2 focus:bg-nord-3 focus:placeholder-nord-1 focus:outline-none" +
