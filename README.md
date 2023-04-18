@@ -11,6 +11,7 @@ You will need an OpenAI API key in order to use this app. [Find out more.](https
 - Lightweight code editor from [CodeMirror](https://codemirror.net/)
   - Automatic language recognition using [vscode-languagedetection](https://github.com/microsoft/vscode-languagedetection)
   - Syntax highlighting with [Nord colourscheme](https://www.nordtheme.com/)
+- Fully responsive design
 - Code explanations powered by ChatGPT (`gpt-3.5-turbo`)
   - Takes your experience level into account (beginner, intermediate, expert)
 - Provides extra details, such as...
