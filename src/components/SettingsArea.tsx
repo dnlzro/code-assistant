@@ -61,7 +61,7 @@ function SettingsArea({
                 </span>
               </label>
               <input
-                type="text"
+                type="password"
                 autoCorrect="off"
                 autoComplete="off"
                 autoCapitalize="off"
