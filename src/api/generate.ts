@@ -31,10 +31,27 @@ export async function generateConfidence(
       content: `How confident are you in your response? Give a percentage estimate, and answer in the following format:
 
 Confidence: {X}%
+
 Explanation: {A very short explanation for why you are this confident.}`,
     } as Message,
   ];
   // Return part response (confidence)
+  return [await formPartResponse(newMessages, apiKey), newMessages];
+}
+
+export async function generateAssumptions(
+  messages: Message[],
+  apiKey?: string
+): Promise<[PartResponse, Message[]]> {
+  // Update messages
+  const newMessages = [
+    ...messages,
+    {
+      role: "user",
+      content: `What are the biggest assumptions you made about the code? Format your answer as a Markdown list.  Do not include an introduction (e.g. "Here are the assumptions I made...").`,
+    } as Message,
+  ];
+  // Return part response (assumptions)
   return [await formPartResponse(newMessages, apiKey), newMessages];
 }
 
@@ -70,10 +87,6 @@ function generateExplanationPrompt(
 
 ${content}`;
 }
-
-function fullResponseToMessages() {}
-
-function partResponseToMessage(response: PartResponse) {}
 
 function getCompletion(messages: Message[], apiKey: string) {
   return fetch("https://api.openai.com/v1/chat/completions", {

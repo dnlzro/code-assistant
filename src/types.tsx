@@ -6,6 +6,7 @@ export type PartResponse = {
 export type FullResponse = {
   explanation?: PartResponse;
   confidence?: PartResponse;
+  assumptions?: PartResponse;
   resources?: PartResponse;
 };
 

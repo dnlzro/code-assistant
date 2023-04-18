@@ -4,6 +4,7 @@ import { ModelResult } from "@vscode/vscode-languagedetection";
 import SubmitArea from "./components/SubmitArea";
 import AssistantArea from "./components/AssistantArea";
 import {
+  generateAssumptions,
   generateConfidence,
   generateExplanation,
   generateResources,
@@ -20,10 +21,11 @@ export function App() {
   const [useEnvKey, setUseEnvKey] = useState(false);
   const [apiKey, setApiKey] = useState("");
   const [apiKeyValid, setApiKeyValid] = useState(false);
-  const [response, setResponse] = useState<FullResponse | null>(null);
+  const [response, setResponse] = useState<FullResponse>({});
   const handleSubmit = async () => {
     setInProgress(true);
     setResponse({});
+    let lastResponse = {};
 
     // Get explanation
     let [explanation, messages1] = await generateExplanation(
@@ -32,36 +34,49 @@ export function App() {
       level,
       !useEnvKey && apiKeyValid ? apiKey : undefined
     );
-    setResponse({ explanation: explanation });
+    lastResponse = { explanation: explanation };
+    setResponse(lastResponse);
+
     if (!explanation.success) return setInProgress(false);
-    console.log(messages1);
+
     let messages2 = [
       ...messages1,
       { role: "assistant", content: explanation.data } as Message,
     ];
-    console.log(messages2);
 
     // Get confidence
     let [confidence, messages3] = await generateConfidence(
       messages2,
       !useEnvKey && apiKeyValid ? apiKey : undefined
     );
-    setResponse({ ...response, confidence: confidence });
-    console.log(messages3);
+    lastResponse = { ...lastResponse, confidence: confidence };
+    setResponse(lastResponse);
 
     let messages4 = [
       ...messages3,
       { role: "assistant", content: confidence.data } as Message,
     ];
-    console.log(messages4);
 
-    // Get resources
-    const [resources, messages5] = await generateResources(
+    // Get assumptions
+    let [assumptions, messages5] = await generateAssumptions(
       messages4,
       !useEnvKey && apiKeyValid ? apiKey : undefined
     );
-    setResponse({ ...response, resources: resources });
-    console.log(messages5);
+    lastResponse = { ...lastResponse, assumptions: assumptions };
+    setResponse(lastResponse);
+
+    let messages6 = [
+      ...messages5,
+      { role: "assistant", content: assumptions.data } as Message,
+    ];
+
+    // Get resources
+    const [resources] = await generateResources(
+      messages6,
+      !useEnvKey && apiKeyValid ? apiKey : undefined
+    );
+    lastResponse = { ...lastResponse, resources: resources };
+    setResponse(lastResponse);
 
     setInProgress(false);
   };
