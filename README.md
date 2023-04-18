@@ -1,5 +1,7 @@
 # AI Code Assistant
 
+![Screenshot of AI Code Assistant application](screenshot.png)
+
 A ChatGPT tool for explaining code. [Link to deployed app.](https://dlazaro.ca/code-assistant/)
 
 You will need an OpenAI API key in order to use this app. [Find out more.](https://platform.openai.com/docs/api-reference/authentication)
