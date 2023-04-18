@@ -4,6 +4,7 @@ import AssistantAreaHeader from "./AssistantAreaHeader";
 import { FullResponse } from "../types";
 import CustomRemark from "./CustomRemark";
 import EmptyProse from "./EmptyProse";
+import { AnimatePresence, motion } from "framer-motion";
 
 export enum ActiveTab {
   Explanation,
@@ -49,63 +50,93 @@ function AssistantArea({
         activeTab={activeTab}
         setActiveTab={setActiveTab}
       />
-      {explanation && activeTab === ActiveTab.Explanation ? (
-        <CustomRemark
-          content={explanation.data}
-          success={explanation.success}
-        ></CustomRemark>
-      ) : explanation && activeTab === ActiveTab.Details ? (
-        <>
-          <h3 class="px-5 text-lg font-bold">Confidence</h3>
-          {inProgress && !confidence ? (
-            <PulseLoader color="#88C0D0" size="1rem" className="px-5 py-4" />
-          ) : confidence ? (
-            <>
-              <div className="stat gap-2 px-5 pt-1">
-                <div className="stat-value">
-                  {getConfidencePercent(confidence.data)}%
+      <AnimatePresence initial={false}>
+        {explanation && activeTab === ActiveTab.Explanation ? (
+          <motion.div
+            key="explanation"
+            initial={{ opacity: 0, x: -150 }}
+            animate={{
+              opacity: 1,
+              x: 0,
+              transition: { ease: "easeOut", duration: 0.2, delay: 0.2 },
+            }}
+            exit={{
+              opacity: 0,
+              x: -150,
+              transition: { ease: "easeOut", duration: 0.2 },
+            }}
+          >
+            <CustomRemark
+              content={explanation.data}
+              success={explanation.success}
+            ></CustomRemark>
+          </motion.div>
+        ) : explanation && activeTab === ActiveTab.Details ? (
+          <motion.div
+            key="details"
+            initial={{ opacity: 0, x: 150 }}
+            animate={{
+              opacity: 1,
+              x: 0,
+              transition: { ease: "easeOut", duration: 0.2, delay: 0.2 },
+            }}
+            exit={{
+              opacity: 0,
+              x: 150,
+              transition: { ease: "easeOut", duration: 0.2 },
+            }}
+          >
+            <h3 class="px-5 text-lg font-bold">Confidence</h3>
+            {inProgress && !confidence ? (
+              <PulseLoader color="#88C0D0" size="1rem" className="px-5 py-4" />
+            ) : confidence ? (
+              <>
+                <div className="stat gap-2 px-5 pt-1">
+                  <div className="stat-value">
+                    {getConfidencePercent(confidence.data)}%
+                  </div>
+                  <progress
+                    class="progress progress-primary h-4 w-56 bg-nord-3"
+                    value={getConfidencePercent(confidence.data)}
+                    max="100"
+                  ></progress>
                 </div>
-                <progress
-                  class="progress progress-primary h-4 w-56 bg-nord-3"
-                  value={getConfidencePercent(confidence.data)}
-                  max="100"
-                ></progress>
-              </div>
+                <CustomRemark
+                  content={getConfidenceExplanation(confidence.data)}
+                  success={confidence.success}
+                ></CustomRemark>
+              </>
+            ) : (
+              <EmptyProse />
+            )}
+            <h3 class="px-5 pt-4 text-lg font-bold">Assumptions</h3>
+            {inProgress && !assumptions ? (
+              <PulseLoader color="#88C0D0" size="1rem" className="px-5 py-4" />
+            ) : assumptions ? (
               <CustomRemark
-                content={getConfidenceExplanation(confidence.data)}
-                success={confidence.success}
+                content={assumptions.data}
+                success={assumptions.success}
               ></CustomRemark>
-            </>
-          ) : (
-            <EmptyProse />
-          )}
-          <h3 class="px-5 pt-4 text-lg font-bold">Assumptions</h3>
-          {inProgress && !assumptions ? (
-            <PulseLoader color="#88C0D0" size="1rem" className="px-5 py-4" />
-          ) : assumptions ? (
-            <CustomRemark
-              content={assumptions.data}
-              success={assumptions.success}
-            ></CustomRemark>
-          ) : (
-            <EmptyProse />
-          )}
-          <h3 class="px-5 pt-4 text-lg font-bold">Additional Resources</h3>
-          {inProgress && !resources ? (
-            <PulseLoader color="#88C0D0" size="1rem" className="px-5 py-4" />
-          ) : resources ? (
-            <CustomRemark
-              content={resources.data}
-              success={resources.success}
-            ></CustomRemark>
-          ) : (
-            <EmptyProse />
-          )}
-        </>
-      ) : (
-        // Initial state
-        <EmptyProse />
-      )}
+            ) : (
+              <EmptyProse />
+            )}
+            <h3 class="px-5 pt-4 text-lg font-bold">Additional Resources</h3>
+            {inProgress && !resources ? (
+              <PulseLoader color="#88C0D0" size="1rem" className="px-5 py-4" />
+            ) : resources ? (
+              <CustomRemark
+                content={resources.data}
+                success={resources.success}
+              ></CustomRemark>
+            ) : (
+              <EmptyProse />
+            )}
+          </motion.div>
+        ) : (
+          // Initial state
+          <EmptyProse />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
