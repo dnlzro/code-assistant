@@ -134,7 +134,6 @@ async function formPartResponse(
         };
       }
     } else {
-      console.log(data.error.message);
       return {
         success: false,
         data: data.error.message,
