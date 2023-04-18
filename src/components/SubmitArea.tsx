@@ -1,12 +1,14 @@
 import { ModelResult } from "@vscode/vscode-languagedetection";
 
 function SubmitArea({
+  inProgress,
   content,
   lang,
   level,
   setLevel,
   handleSubmit,
 }: {
+  inProgress: boolean;
   content: string;
   lang: ModelResult | null;
   level: string;
@@ -68,7 +70,7 @@ function SubmitArea({
           <button
             class={
               "btn-primary btn w-full sm:w-36" +
-              (content.trim().length === 0 || level === ""
+              (content.trim().length === 0 || level === "" || inProgress
                 ? " btn-disabled bg-nord-2 text-nord-0"
                 : "")
             }
