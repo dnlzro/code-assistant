@@ -13,7 +13,7 @@ You will need an OpenAI API key in order to use this app. [Find out more.](https
   - Syntax highlighting with [Nord colourscheme](https://www.nordtheme.com/)
 - Fully responsive design
 - Code explanations powered by ChatGPT (`gpt-3.5-turbo`)
-  - Takes your experience level into account (beginner, intermediate, expert)
+  - Takes your experience level into account
 - Provides extra details, such as...
   - Model's confidence in the explanation
   - Assumptions made by the model
