@@ -88,7 +88,9 @@ function AssistantArea({
           >
             <h3 class="px-5 text-lg font-bold">Confidence</h3>
             {inProgress && !confidence ? (
-              <PulseLoader color="#88C0D0" size="1rem" className="px-5 py-4" />
+              <div class="px-5 py-4">
+                <PulseLoader color="#88C0D0" size="1rem" />
+              </div>
             ) : confidence ? (
               <>
                 <div className="stat gap-2 px-5 pt-1">
@@ -111,7 +113,9 @@ function AssistantArea({
             )}
             <h3 class="px-5 pt-4 text-lg font-bold">Assumptions</h3>
             {inProgress && !assumptions ? (
-              <PulseLoader color="#88C0D0" size="1rem" className="px-5 py-4" />
+              <div class="px-5 py-4">
+                <PulseLoader color="#88C0D0" size="1rem" />
+              </div>
             ) : assumptions ? (
               <CustomRemark
                 content={assumptions.data}
@@ -122,7 +126,9 @@ function AssistantArea({
             )}
             <h3 class="px-5 pt-4 text-lg font-bold">Additional Resources</h3>
             {inProgress && !resources ? (
-              <PulseLoader color="#88C0D0" size="1rem" className="px-5 py-4" />
+              <div class="px-5 py-4">
+                <PulseLoader color="#88C0D0" size="1rem" />
+              </div>
             ) : resources ? (
               <CustomRemark
                 content={resources.data}
