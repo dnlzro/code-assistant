@@ -11,6 +11,7 @@ function CustomRemark({
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGFM]}
+      linkTarget="_blank"
       className={
         "prose !prose-nord max-w-none px-5 " +
         (success
