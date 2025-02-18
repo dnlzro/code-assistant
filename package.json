@@ -5,40 +5,44 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build --base=/code-assistant/",
+    "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@babel/runtime": "^7.21.0",
-    "@codemirror/commands": "^6.2.2",
-    "@codemirror/lang-javascript": "^6.1.6",
-    "@codemirror/language": "^6.6.0",
-    "@codemirror/language-data": "^6.2.1",
-    "@codemirror/state": "^6.2.0",
-    "@codemirror/view": "^6.9.5",
-    "@heroicons/react": "^2.0.17",
-    "@tailwindcss/typography": "^0.5.9",
-    "@uiw/codemirror-theme-nord": "^4.19.16",
+    "@babel/runtime": "^7.26.9",
+    "@codemirror/commands": "^6.8.0",
+    "@codemirror/lang-javascript": "^6.2.3",
+    "@codemirror/language": "^6.10.8",
+    "@codemirror/language-data": "^6.5.1",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/view": "^6.36.3",
+    "@heroicons/react": "^2.2.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "@uiw/codemirror-theme-nord": "^4.23.8",
     "@vscode/vscode-languagedetection": "^1.0.22",
     "codemirror": "^6.0.1",
-    "daisyui": "^2.51.5",
-    "extends": "link:@babel/runtime/helpers/extends",
-    "framer-motion": "^10.12.4",
-    "preact": "^10.13.2",
+    "daisyui": "^2.52.0",
+    "framer-motion": "^10.18.0",
+    "preact": "^10.26.2",
     "react-markdown": "^8.0.7",
     "react-spinners": "^0.13.8",
     "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
-    "@preact/preset-vite": "^2.5.0",
-    "@types/react": "^18.0.37",
-    "@types/react-dom": "^18.0.11",
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.22",
-    "prettier": "^2.8.7",
-    "prettier-plugin-tailwindcss": "^0.2.7",
-    "tailwindcss": "^3.3.1",
+    "@preact/preset-vite": "^2.10.1",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.2",
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.2.8",
+    "tailwindcss": "^3.4.17",
     "typescript": "^4.9.5",
-    "vite": "^4.2.2"
+    "vite": "^4.5.9"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }

@@ -42,8 +42,8 @@ function SettingsArea({
   }, [dropdown, checkbox]);
 
   return (
-    <div className="dropdown-end dropdown-open dropdown">
-      <label class="swap-rotate swap">
+    <div className="dropdown dropdown-end dropdown-open">
+      <label class="swap swap-rotate">
         <input
           ref={checkbox}
           type="checkbox"
@@ -84,7 +84,7 @@ function SettingsArea({
                 </span>
                 <input
                   type="checkbox"
-                  className="toggle-primary toggle"
+                  className="toggle toggle-primary"
                   onClick={() => setUseEnvKey(!useEnvKey)}
                 />
               </label>
@@ -116,7 +116,7 @@ function SettingsArea({
                       autoCorrect="off"
                       autoComplete="off"
                       autoCapitalize="off"
-                      spellCheck={false}
+                      spellcheck={false}
                       placeholder="sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
                       className={
                         "input h-auto w-full bg-nord-0 p-2 font-mono text-nord-4 placeholder-nord-2 focus:bg-nord-3 focus:placeholder-nord-1 focus:outline-none" +

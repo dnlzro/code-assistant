@@ -82,9 +82,7 @@ export function App() {
   };
 
   useEffect(() => {
-    apiKey.match(/^sk-[A-Za-z0-9]{48}$/)
-      ? setApiKeyValid(true)
-      : setApiKeyValid(false);
+    apiKey.match(/^sk-.*$/) ? setApiKeyValid(true) : setApiKeyValid(false);
   }, [apiKey]);
 
   return (
